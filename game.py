@@ -7,6 +7,7 @@ from time import sleep
 from random import randint
 from audio import Audio
 
+
 class Game:
     def __init__(self) -> None:
         self.bird = Bird(127, 200, randint(1, 3))
@@ -30,8 +31,10 @@ class Game:
             if self.pipe_spawn_counter == TWO_PIPE_COUPLES_OPENING_SPACING:
                 self.pipe_couples.append(
                     PipeCouple(
-                        randint(BASE_HEIGHT, WINDOW_HEIGHT - PIPE_COUPLE_OPENING_HEIGHT),
-                        self.pipe_texture_index
+                        randint(
+                            BASE_HEIGHT, WINDOW_HEIGHT - PIPE_COUPLE_OPENING_HEIGHT
+                        ),
+                        self.pipe_texture_index,
                     )
                 )
                 self.pipe_spawn_counter = 0
@@ -42,7 +45,9 @@ class Game:
             if self.pipe_couples:
                 if self.pipe_couples[0].detect_window_left_edge_bypass():
                     self.pipe_couples.pop(0)
-                if not self.pipe_couples[0].counted and self.pipe_couples[0].detect_bird_edge_bypass(self.bird):
+                if not self.pipe_couples[0].counted and self.pipe_couples[
+                    0
+                ].detect_bird_edge_bypass(self.bird):
                     Audio("point.wav").start()
                     self.score_value += 1
                     self.pipe_couples[0].counted = True

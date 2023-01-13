@@ -4,6 +4,7 @@ from texture import textures_lookup
 from constants import *
 from typing import Type
 
+
 class Rectangle:
     def __init__(self, x_start: int, y_start: int, width: int, height: int) -> None:
         self.x_start = x_start

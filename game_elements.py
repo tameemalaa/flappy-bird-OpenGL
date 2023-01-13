@@ -48,9 +48,13 @@ class PipeCouple:
         self.texture_index = texture_index
         self.opening_y_start = opening_y_start
         self.opening_y_end = self.opening_y_start + PIPE_COUPLE_OPENING_HEIGHT
-        self.sky_pipe = SkyPipe(WINDOW_WIDTH + DELAY_DISTANCE, self.opening_y_end, self.texture_index)
+        self.sky_pipe = SkyPipe(
+            WINDOW_WIDTH + DELAY_DISTANCE, self.opening_y_end, self.texture_index
+        )
         self.ground_pipe = GroundPipe(
-            WINDOW_WIDTH + DELAY_DISTANCE, self.opening_y_start - PIPE_HEIGHT, self.texture_index
+            WINDOW_WIDTH + DELAY_DISTANCE,
+            self.opening_y_start - PIPE_HEIGHT,
+            self.texture_index,
         )
         self.counted = False
 
