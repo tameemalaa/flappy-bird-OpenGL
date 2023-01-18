@@ -9,7 +9,7 @@ PARENT_DIR = os.path.dirname(os.path.abspath(__file__)).replace(":", ":\\")
 
 class Audio(Thread):
     def __init__(self, audio_file: str) -> None:
-        Thread.__init__(self)
+        super().__init__()
         self.audio = os.path.join(PARENT_DIR, AUDIO_DIRECTORY, audio_file)
 
     def run(self):
