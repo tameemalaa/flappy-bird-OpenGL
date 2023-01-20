@@ -9,7 +9,31 @@ from audio import Audio
 
 
 class Game:
+    """
+    The main game class. encapsulates all the game elements and the game logic.
+
+    Attributes:
+        bird(Bird): the bird object.
+        background(Background): the background object.
+        base(Base): the base object.
+        game_over(GameOver): the game over object.
+        start_message(StartMessage): the start message object.
+        pipe_couples(list): the list of pipe couples.
+        state(int): the game state.
+        score(Score): the score object.
+        score_value(int): the score value.
+        pipe_spawn_counter(int): the counter used to spawn pipes.
+        pipe_texture_index(int): the index of the pipe texture to be used.
+
+    Methods:
+        play(): handles the game logic.
+        user_input(): handles the user input.
+    """
+
     def __init__(self) -> None:
+        """
+        Initializes the Game class.
+        """
         self.bird = Bird(127, 200, randint(1, 3))
         self.background = Background(randint(1, 2))
         self.base = Base()
@@ -23,6 +47,14 @@ class Game:
         self.pipe_texture_index = randint(1, 2)
 
     def play(self) -> None:
+        """
+        Handles the game logic.
+        Args:
+            None
+
+        Returns:
+            None
+        """
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
         self.background.render()
         if self.state == PRE_GAME:
@@ -87,6 +119,16 @@ class Game:
         sleep(1 / FPS)
 
     def user_input(self, key: bytes, x: int, y: int) -> None:
+        """
+        Handles the user input. This function is called by the glutKeyboardFunc function.
+        Args:
+            key(bytes): the key pressed.
+            x(int): the x coordinate of the mouse.
+            y(int): the y coordinate of the mouse.
+
+        Returns:
+            None
+        """
         if self.state == PRE_GAME or self.state == POST_GAME:
             if key == b" ":
                 self.__init__()
