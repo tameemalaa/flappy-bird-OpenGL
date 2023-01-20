@@ -10,7 +10,7 @@ def initialize_world():
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
     glClearColor(0, 0, 0, 0)
-    glOrtho(0, WINDOW_WIDTH, 0, WINDOW_HEIGHT, 0.0, 1.0)
+    glOrtho(X_ORIGIN, WINDOW_WIDTH, Y_ORIGIN, WINDOW_HEIGHT, 0.0, 1.0)
     glMatrixMode(GL_MODELVIEW)
 
 
