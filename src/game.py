@@ -1,11 +1,11 @@
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
-from constants import *
-from game_elements import *
+from src.constants import *
+from src.game_elements import *
 from time import sleep
 from random import randint
-from audio import Audio
+from src.audio import Audio
 
 
 class Game:

@@ -1,5 +1,5 @@
-from constants import *
-from rectangle import Rectangle
+from src.constants import *
+from src.rectangle import Rectangle
 
 
 class GroundPipe(Rectangle):

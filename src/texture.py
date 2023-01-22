@@ -1,6 +1,6 @@
 from OpenGL.GL import *
 from OpenGL.GLUT import *
-from constants import *
+from src.constants import *
 import pygame
 import os
 

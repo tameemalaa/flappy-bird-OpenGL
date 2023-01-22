@@ -1,10 +1,10 @@
 import os
 from threading import Thread
 from playsound import playsound
-from constants import AUDIO_DIRECTORY
+from src.constants import AUDIO_DIRECTORY
 
 
-PARENT_DIR = os.path.dirname(os.path.abspath(__file__)).replace(":", ":\\")
+PARENT_DIR = os.path.dirname(os.path.abspath(__file__)).replace(":", ":\\")[:-4]
 
 
 class Audio(Thread):
