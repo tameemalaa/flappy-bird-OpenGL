@@ -8,8 +8,22 @@ textures_paths = [x for x in os.listdir(os.path.dirname(TEXTURES_DIRECTORY))]
 textures_lookup = {x: y for y, x in enumerate(textures_paths)}
 
 
-def texture_setup(texture_image_binary, texture_name, width, height):
-    glBindTexture(GL_TEXTURE_2D, texture_name)
+def texture_setup(
+    texture_image_binary: list[bytes], texture_number: int, width: int, height: int
+) -> None:
+    """
+    Sets up a texture for OpenGL and map it to a texture_number.
+
+    Args:
+        texture_image_binary (list[bytes]): The texture image in binary format.
+        texture_number (int): The texture number.
+        width (int): The width of the texture.
+        height (int): The height of the texture.
+
+    Returns:
+        None
+    """
+    glBindTexture(GL_TEXTURE_2D, texture_number)
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT)
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT)
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
@@ -29,6 +43,9 @@ def texture_setup(texture_image_binary, texture_name, width, height):
 
 
 def texture_init():
+    """
+    Initializes the textures for OpenGL.
+    """
     glEnable(GL_TEXTURE_2D)
     texture_pygame = [
         pygame.image.load(TEXTURES_DIRECTORY + texture)
