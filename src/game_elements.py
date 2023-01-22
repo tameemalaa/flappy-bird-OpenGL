@@ -16,9 +16,6 @@ class GroundPipe(Rectangle):
     """
 
     def __init__(self, x_start: int, y_start: int, texture_index: int = 1) -> None:
-        """
-        initializes the GroundPipe class.
-        """
         super().__init__(x_start, y_start, PIPE_WIDTH, PIPE_HEIGHT)
         self.x_velocity = -1
         self.texture_index = texture_index
@@ -100,9 +97,6 @@ class PipeCouple:
     """
 
     def __init__(self, opening_y_start: int, texture_index: int = 1) -> None:
-        """
-        initializes the PipeCouple class.
-        """
         self.texture_index = texture_index
         self.opening_y_start = opening_y_start
         self.opening_y_end = self.opening_y_start + PIPE_COUPLE_OPENING_HEIGHT
@@ -119,6 +113,7 @@ class PipeCouple:
     def detect_collision(self, rectangle: Rectangle) -> None:
         """
         detects if the pipe couple has collided with the given rectangle.
+        Wrapper for the ground/sky pipe detect_collision
         args:
             rectangle (Rectangle): the rectangle object.
 
@@ -132,6 +127,7 @@ class PipeCouple:
     def render(self) -> None:
         """
         renders the pipe couple.
+        Wrapper for the ground/sky pipe render
         """
         self.sky_pipe.render()
         self.ground_pipe.render()
@@ -139,6 +135,8 @@ class PipeCouple:
     def refresh(self) -> None:
         """
         refreshes the pipe couple.
+        Wrapper for the ground/sky pipe refresh
+
         """
 
         self.sky_pipe.refresh()
@@ -147,6 +145,7 @@ class PipeCouple:
     def detect_window_left_edge_bypass(self) -> bool:
         """
         detects if the pipe couple has bypassed the left edge of the window.
+        Wrapper for the ground/sky pipe detect_window_left_edge_bypass
 
         returns:
             bool: True if the pipe couple has bypassed the left edge of the window, False otherwise.
@@ -159,6 +158,8 @@ class PipeCouple:
     def detect_bird_edge_bypass(self, bird) -> bool:
         """
         detects if the pipe couple has bypassed the bird.
+        Wrapper for the ground/sky pipe detect_bird_edge_bypass
+
         args:
             bird (Bird): the bird object.
 
@@ -187,9 +188,6 @@ class Bird(Rectangle):
     """
 
     def __init__(self, x_start: int, y_start: int, texture_index: int = 1) -> None:
-        """
-        initializes the Bird class.
-        """
         super().__init__(x_start, y_start, BIRD_WIDTH, BIRD_HEIGHT)
         self.state_counter = 0
         self.texture_index = texture_index
@@ -233,9 +231,6 @@ class Base(Rectangle):
     """
 
     def __init__(self) -> None:
-        """
-        initializes the Base class.
-        """
         super().__init__(X_ORIGIN, Y_ORIGIN, BASE_WIDTH, BASE_HEIGHT)
         self.x_velocity = -3
 
@@ -260,9 +255,6 @@ class Background(Rectangle):
     """
 
     def __init__(self, texture_index: int = 1) -> None:
-        """
-        initializes the Background class.
-        """
         super().__init__(1, 1, BACKGROUND_WIDTH, BACKGROUND_HEIGHT)
         self.texture_index = texture_index
 
@@ -282,9 +274,6 @@ class GameOver(Rectangle):
     """
 
     def __init__(self) -> None:
-        """
-        initializes the GameOver class.
-        """
         super().__init__(
             (WINDOW_WIDTH // 2) - (GAME_OVER_WIDTH // 2),
             (WINDOW_HEIGHT // 2) - (GAME_OVER_HEIGHT // 2) + (BASE_HEIGHT // 2),
@@ -309,9 +298,6 @@ class StartMessage(Rectangle):
     """
 
     def __init__(self) -> None:
-        """
-        initializes the StartMessage class.
-        """
         super().__init__(
             X_ORIGIN + 25, Y_ORIGIN + 50, WINDOW_WIDTH - 50, WINDOW_HEIGHT - 100
         )
@@ -329,9 +315,6 @@ class ScoreDigit(Rectangle):
     """
 
     def __init__(self, x_start: int, y_start: int) -> None:
-        """
-        initializes the ScoreDigit class.
-        """
         super().__init__(x_start, y_start, SCORE_DIGIT_WIDTH, SCORE_DIGIT_HEIGHT)
         self.digit = "0"
 
@@ -355,9 +338,6 @@ class Score:
     """
 
     def __init__(self) -> None:
-        """
-        initializes the Score class.
-        """
         self.right_digit = ScoreDigit(
             WINDOW_WIDTH // 2 + SCORE_DIGIT_WIDTH // 2,
             WINDOW_HEIGHT - (SCORE_DIGIT_HEIGHT + SCORE_DIGIT_SPACING // 2),
@@ -384,7 +364,7 @@ class Score:
 
     def set_score(self, score: int):
         """
-        sets the score.
+        sets the score for each digit.
 
         args:
             score (int): the score to be set.

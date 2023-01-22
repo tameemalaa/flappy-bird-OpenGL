@@ -19,9 +19,6 @@ class Audio(Thread):
     """
 
     def __init__(self, audio_file: str) -> None:
-        """
-        Initializes the Audio class.
-        """
         super().__init__()
         self.audio_file = os.path.join(PARENT_DIR, AUDIO_DIRECTORY, audio_file)
 

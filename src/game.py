@@ -31,9 +31,6 @@ class Game:
     """
 
     def __init__(self) -> None:
-        """
-        Initializes the Game class.
-        """
         self.bird = Bird(127, 200, randint(1, 3))
         self.background = Background(randint(1, 2))
         self.base = Base()
@@ -54,13 +51,32 @@ class Game:
 
         Returns:
             None
+        
+        Detailed description:
+        the game state is an integer that represents the current state of the game.
+        the game state can be one of the following:
+            PRE_GAME: the game is in the pre game state. => -1
+            PLAYING: the game is in the playing state. => 0
+            POST_GAME: the game is in the post game state. => 1
+        when the game is in the pre game state, the start message is rendered.
+        when the game is in the playing state, the following happens:
+            when the pipe spawn counter reaches the pipe couples spacing, a new pipe couple is added to the pipe couples list.
+            when the pipe spawn counter reaches the pipe couples spacing, the pipe spawn counter is reset.
+            when the pipe spawn counter is less than the pipe couples spacing, the pipe spawn counter is incremented.
+                if the first pipe couple in the pipe couples list has bypassed the window left edge:
+                    the first pipe couple in the pipe couples list is removed from the pipe couples list.
+                if the first pipe couple in the pipe couples list has not been counted and the first pipe couple in the pipe couples list has bypassed the bird edge:
+                    a point sound is played and the score value is incremented and mark the first pipe couple in the pipe couples list is marked as counted.
+                    if the score value is 99: the game state is set to post game.
+        when the game is in the post game state, the game over message is rendered.
+        note that The sleep function is used to achieve the required FPS.
         """
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
         self.background.render()
         if self.state == PRE_GAME:
             self.Start_message.render()
         elif self.state == PLAYING:
-            if self.pipe_spawn_counter == TWO_PIPE_COUPLES_OPENING_SPACING:
+            if self.pipe_spawn_counter == TWO_PIPE_COUPLES_SPACING:
                 self.pipe_couples.append(
                     PipeCouple(
                         randint(
@@ -91,7 +107,6 @@ class Game:
             self.bird.render()
             self.bird.refresh()
             self.score.render()
-
             if (
                 self.base.detect_collision(self.bird)
                 or self.bird.detect_window_top_edge_collision()
