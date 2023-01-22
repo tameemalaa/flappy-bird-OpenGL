@@ -59,6 +59,13 @@ python3 -m pip install -r requirements.txt
 ```bash
 python -m pip install -r requirements.txt
 ```
+#### Notes
+
+- For some versions of python the official `PyOpenGL` and `PyOpenGL_accelerate`  packages don't work properly. if you have trouble installing them you can use this [guide](https://www.youtube.com/watch?v=a4NVQC_2S2U&t=344s&ab_channel=NaseemShah).
+
+- I don't recommend using `python 3.11` with this project since it's not yet fully compatible with most dependencies such as `pygame`.
+
+- If you have further problem installing the dependencies feel free to [contact me](mailto:tameem.alaa@gmail.com).
 
 ## Running the game
 
