@@ -1,7 +1,7 @@
 from OpenGL.GL import *
 from OpenGL.GLUT import *
-from texture import textures_lookup
-from constants import *
+from src.texture import textures_lookup
+from src.constants import *
 from typing import Type
 
 

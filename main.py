@@ -1,9 +1,9 @@
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
-from constants import *
-from game import Game
-from texture import texture_init
+from src.constants import *
+from src.game import Game
+from src.texture import texture_init
 
 
 def initialize_world():

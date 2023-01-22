@@ -1,11 +1,11 @@
-from constants import *
-from rectangle import Rectangle
+from src.constants import *
+from src.rectangle import Rectangle
 
 
 class GroundPipe(Rectangle):
     def __init__(self, x_start: int, y_start: int, texture_index: int = 1) -> None:
         super().__init__(x_start, y_start, PIPE_WIDTH, PIPE_HEIGHT)
-        self.x_velocity = -1
+        self.x_velocity = PIPE_X_VELOCITY
         self.texture_index = texture_index
 
     def render(self) -> None:
@@ -25,9 +25,8 @@ class GroundPipe(Rectangle):
 class SkyPipe(Rectangle):
     def __init__(self, x_start: int, y_start: int, texture_index: int = 1) -> None:
         super().__init__(x_start, y_start, PIPE_WIDTH, PIPE_HEIGHT)
+        self.x_velocity = PIPE_X_VELOCITY
         self.texture_index = texture_index
-
-        self.x_velocity = -1
 
     def detect_window_left_edge_bypass(self) -> bool:
         if self.x_end <= Y_ORIGIN:
@@ -112,7 +111,7 @@ class Bird(Rectangle):
 class Base(Rectangle):
     def __init__(self) -> None:
         super().__init__(X_ORIGIN, Y_ORIGIN, BASE_WIDTH, BASE_HEIGHT)
-        self.x_velocity = -3
+        self.x_velocity = BASE_X_VELOCITY
 
     def render(self) -> None:
         if self.x_end <= WINDOW_WIDTH:
