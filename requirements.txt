@@ -1,0 +1,4 @@
+playsound
+pygame
+PyOpenGL 
+PyOpenGL_accelerate
